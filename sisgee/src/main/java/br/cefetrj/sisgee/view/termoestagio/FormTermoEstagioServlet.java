@@ -404,19 +404,9 @@ public class FormTermoEstagioServlet extends HttpServlet {
         String cepEnderecoMsg = "";
         campo = "CEP";
         tamanho = 15;
-        cepEnderecoMsg = ValidaUtils.validaObrigatorio(campo, cepEnderecoTermoEstagio);
+        cepEnderecoMsg = ValidaUtils.validaTamanho(campo, tamanho, cepEnderecoTermoEstagio);
         if (cepEnderecoMsg.trim().isEmpty()) {
-            cepEnderecoMsg = ValidaUtils.validaTamanho(campo, tamanho, cepEnderecoTermoEstagio);
-            if (bairroEnderecoMsg.trim().isEmpty()) {
-                request.setAttribute("cepEnderecoTermoEstagio", cepEnderecoTermoEstagio);
-            } else {
-                cepEnderecoMsg = messages.getString(cepEnderecoMsg);
-                cepEnderecoMsg = ServletUtils.mensagemFormatada(bairroEnderecoMsg, locale, tamanho);
-                request.setAttribute("cepEnderecoMsg", cepEnderecoMsg);
-                isValid = false;
-                //TODO Fazer log
-                System.out.println(cepEnderecoMsg);
-            }
+           request.setAttribute("cepEnderecoTermoEstagio", cepEnderecoTermoEstagio);
         } else {
             cepEnderecoMsg = messages.getString(cepEnderecoMsg);
             request.setAttribute("cepEnderecoMsg", cepEnderecoMsg);
@@ -513,7 +503,7 @@ public class FormTermoEstagioServlet extends HttpServlet {
 
         /**
          * Validação do nome do supervisor do TermoEstagio usando métodos da
-         * Classe ValidaUtils. Campo opicional e tamanho máximo de 80
+         * Classe ValidaUtils. Campo opcional e tamanho máximo de 80
          * caracteres.
          */
         String nomeSupervisorMsg = "";

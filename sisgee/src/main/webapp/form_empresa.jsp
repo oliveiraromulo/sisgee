@@ -1,7 +1,3 @@
-<%@page import="br.cefetrj.sisgee.control.ConvenioServices"%>
-<%@page import="br.cefetrj.sisgee.model.entity.Convenio"%>
-<%@page import="br.cefetrj.sisgee.model.entity.Convenio"%>
-<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,20 +21,11 @@
             </c:if>
 
             <p class="tituloForm">
-            <h5 class="offset-5"><fmt:message key="br.cefetrj.sisgee.form_empresa.msg_titulo" /></h5>
-            
-            <form id="meuForm" action="InsereNumeroConvenioServlet" method="GET">
-                <fieldset class="form-group">
-                    <div class="form-group col-md">
-                            <label for="convenioNumero"><fmt:message key = "br.cefetrj.sisgee.resources.form.convenio_numero"/></label>
-                            <input type="text" class="form-control" id="convenioNumero" name="nome" value="000111" readonly>
-                    </div>
-                </fieldset>
-            </form>
-                            
+            <h5 class="offset-5"><fmt:message key="br.cefetrj.sisgee.form_empresa.msg_titulo" /></h5>		
+
             <form id="meuForm" action="ValidaCadastroEmpresaServlet" method="POST">
-                <fieldset class="form-group">     
-                    
+                <fieldset class="form-group">
+
 
                     <div class="form-row  " >
                         <div class="form-group col-md-2 mt-2 " >
@@ -56,11 +43,12 @@
                                 <span class="custom-control-indicator"></span> 
                                 <span class="custom-control-description"><fmt:message key = "br.cefetrj.sisgee.form_empresa.msg_pessoaFisica"/></span>
                             </label>
-                        </div>  
+
+                        </div>
                     </div>
-                            
-                            
-                            
+
+
+
                     <div class=" isAI AI" ${ empty param.tipoPessoa ? "style='display:none'" : param.tipoPessoa == "nao" ? "style='display:none'" : "" } >     
 
                         <div class="form-row "  >
@@ -83,10 +71,10 @@
                                     <div class="invalid-feedback">${ agenteIntegracaoMsg }</div>
                                 </c:if>
                             </div>
-                                
-                                
-                                
-                                
+
+
+
+
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cnpjEmpresa"><fmt:message key = "br.cefetrj.sisgee.form_empresa.msg_cnpj"/></label>
@@ -135,14 +123,23 @@
                                 <div class="invalid-feedback">${ contatoEmpresaMsg }</div>
                             </c:if>
                         </div>
-                        
+
                         <div class="form-group col-md-6">
-                            <label for="convenioAnoEmpresa"><fmt:message key = "br.cefetrj.sisgee.resources.form.convenio_ano"/></label>
-                            <input type="text" class="form-control ${ not empty convenioAnoEmpresa ? 'is-invalid': 'is-valid' }" id="convenioAnoPessoa" name="convenioAnoEmpresa" maxlength="4"  value="${param.convenioAnoEmpresa}">
-                            <c:if test="${ not empty convenioAnoEmpresaMsg }">
-                                <div class="invalid-feedback">${ convenioAnoEmpresaMsg }</div>
+                            <label for="convenioAno"><fmt:message key = "br.cefetrj.sisgee.resources.form.convenio_ano"/></label>
+                            <input type="text" class="form-control ${ not empty convenioAno ? 'is-invalid': 'is-valid' }" id="convenioAno" name="convenioAno" maxlength="4"  value="${param.convenioAno}">
+                            <c:if test="${ not empty convenioAnoMsg }">
+                                <div class="invalid-feedback">${ convenioAnoMsg }</div>
+                            </c:if>
+                    </div>         
+
+                        <div class="form-group col-md-6">
+                            <label for="convenioNumero"><fmt:message key = "br.cefetrj.sisgee.resources.form.convenio_numero"/></label>
+                            <input type="text" class="form-control ${ not empty convenioNumero ? 'is-invalid': 'is-valid' }" id="convenioNumero" name="convenioNumero" maxlength="11"  value="${param.numeroConvenio}">
+                            <c:if test="${ not empty convenioNumeroMsg }">
+                                <div class="invalid-feedback">${ convenioNumeroMsg }</div>
                             </c:if>
                         </div>
+                           
                     </div>         
 
                     <div class=" notAI AI" ${ empty param.tipoPessoa ? "style='display:none'" : param.tipoPessoa == "sim" ? "style='display:none'" : "" } >
@@ -185,14 +182,23 @@
                                 <div class="invalid-feedback">${ telefonePessoaMsg }</div>
                             </c:if>
                         </div>
-                        
+
                         <div class="form-group col-md-6">
-                            <label for="convenioAnoPessoa"><fmt:message key = "br.cefetrj.sisgee.resources.form.convenio_ano"/></label>
-                            <input type="text" class="form-control ${ not empty convenioAnoPessoa ? 'is-invalid': 'is-valid' }" id="convenioAnoPessoa" name="convenioAnoPessoa" maxlength="4"  value="${param.convenioAnoPessoa}">
-                            <c:if test="${ not empty convenioAnoPessoaMsg }">
-                                <div class="invalid-feedback">${ convenioAnoPessoaMsg }</div>
+                            <label for="convenioAno"><fmt:message key = "br.cefetrj.sisgee.resources.form.convenio_ano"/></label>
+                            <input type="text" class="form-control ${ not empty convenioAno ? 'is-invalid': 'is-valid' }" id="convenioAno" name="convenioAno" maxlength="4"  value="${param.convenioAno}">
+                            <c:if test="${ not empty convenioAnoMsg }">
+                                <div class="invalid-feedback">${ convenioAnoMsg }</div>
+                            </c:if>
+                    </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="convenioNumero"><fmt:message key = "br.cefetrj.sisgee.resources.form.convenio_numero"/></label>
+                            <input type="text" class="form-control ${ not empty convenioNumero ? 'is-invalid': 'is-valid' }" id="convenioNumero" name="convenioNumero" maxlength="11"  value="${param.numeroConvenio}">
+                            <c:if test="${ not empty convenioNumeroMsg }">
+                                <div class="invalid-feedback">${ convenioNumeroMsg }</div>
                             </c:if>
                         </div>
+
                     </div>
 
                 </fieldset>

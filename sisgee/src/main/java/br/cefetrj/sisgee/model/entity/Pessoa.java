@@ -73,7 +73,9 @@ public class Pessoa implements Serializable {
 
     public String getNome() {
         return nome;
-    }    
+    }
+
+    
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
@@ -110,7 +112,7 @@ public class Pessoa implements Serializable {
     public String getEmail() {
         return email;
     }
-    
+
     public String getConvenioAno() {
         return convenioAno;
     }

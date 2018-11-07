@@ -29,6 +29,8 @@ public class Empresa implements Serializable {
     @Column(length = 14, nullable = false, unique = true)
     private String cnpjEmpresa;
 
+   
+
     @Column(length = 100)
     private String razaoSocial;
 
@@ -43,7 +45,7 @@ public class Empresa implements Serializable {
 
     @Column(length = 50)
     private String contatoEmpresa;
-    
+
     @Column(length = 4)
     private String convenioAno;
     
@@ -100,6 +102,8 @@ public class Empresa implements Serializable {
         this.cnpjEmpresa = cnpjEmpresa;
     }
 
+    
+
     public String getRazaoSocial() {
         return razaoSocial;
     }
@@ -123,7 +127,7 @@ public class Empresa implements Serializable {
     public void setContatoEmpresa(String contatoEmpresa) {
         this.contatoEmpresa = contatoEmpresa;
     }
-    
+
     public String getConvenioAno() {
         return convenioAno;
     }

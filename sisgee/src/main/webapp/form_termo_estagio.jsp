@@ -317,7 +317,6 @@
                     <div class="form-group col-md-8">
                         <label for="idProfessorOrientador"><fmt:message key = "br.cefetrj.sisgee.resources.form.professorOrientador"/></label>
                         <select name="idProfessorOrientador" id="idProfessorOrientador" class="form-control ${ not empty idProfessorMsg ? 'is-invalid': not empty idProfessorMsg ? 'is-invalid' : 'is-valid' }" >
-                            <option value="">---</option>
                             <c:forEach items="${ professores }" var="professor">
                                 <c:if test="${professor.idProfessorOrientador eq idProfessor}">
                                     <option value="${ professor.idProfessorOrientador }" selected> ${ professor.nomeProfessorOrientador }</option>
@@ -384,11 +383,10 @@
             $("#cnpjEcpf1").mask("99.999.999/9999-99");
             $('#cepEnderecoTermoEstagio').mask('99.999-999');
             $('#dataIni').mask('99/99/9999');
-                    
+            $('#idProfessorOrientador').editableSelect();        
 
-        });
-
-
+        });        
+        
         function sugereData() {
             var tipoDeAluno = document.getElementById('tipoAluno').value;
 
